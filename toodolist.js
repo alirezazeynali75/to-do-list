@@ -17,11 +17,14 @@ app.get('/api/todolist', (req, res) => {
         .catch((err) => console.log(err));
 });
 
-app.get('/api/todolist/:id', (req, res) => {
+app.get('/api/todolist/:id', async (req, res) => {
     const id = req.params.id;
-    todoo.findById(id)
-        .then((result) => res.send(result))
-        .catch((err) => console.log(err));
+    try {
+        const todo = await todoo.findById(id)
+        res.status(200).send(todo)
+    } catch (e) {
+        res.status(500).send({"error": e.message})
+    }
 });
 
 app.post('/api/todolist/', (req, res) => {
