@@ -4,6 +4,7 @@ const todolistschema = new Schema({
     title: {
         type: String,
         required: true,
-    }});
-const todo = mongoose.model('todo',todolistschema);
+    }
+});
+const todo = mongoose.model('todo', todolistschema);
 module.exports = todo;
