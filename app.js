@@ -8,7 +8,7 @@ const dbURI = 'mongodb+srv://mehrand77:lJb8KPvpuOYgqfTX@nodetuts.n7qqvho.mongodb
 app.use(express.static('public'));
 app.use(express.json());
 
-app.use('api/todolist', router)
+app.use('/api/todolist', router)
 
 
 db(dbURI).then(() => app.listen(3000))

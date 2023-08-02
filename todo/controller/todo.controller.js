@@ -57,7 +57,7 @@ class TodoController {
 
   async delete(req, res) {
     try {
-      const title = req.params.id
+      const id = req.params.id
       await this.service.delete(id)
       res.sendStatus(204)
     } catch (e) {

@@ -21,7 +21,7 @@ class TodoService {
   }
 
   async update(id, title, completed) {
-    return updateById(id, title, completed)
+    return this.repo.updateById(id, title, completed)
   }
 }
 
