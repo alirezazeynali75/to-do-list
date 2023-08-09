@@ -8,6 +8,7 @@ class BookService {
     async get(fullname) {
         await this.repo.getbyname(fullname)
     }
+
     async get(number) {
         if (number) {
             return this.repo.getbynumber(number)
@@ -22,6 +23,7 @@ class BookService {
     async update(fullname, number) {
         return this.repo.updatebyname(fullname, number)
     }
+
     async update(fullname, number) {
         return this.repo.updatebynumber(fullname, number)
     }

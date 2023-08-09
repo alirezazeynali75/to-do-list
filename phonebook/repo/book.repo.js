@@ -22,7 +22,7 @@ class BookRepo {
         })
     }
 
-    async updatebynumber(fullname, number) {
+    async updatebynumber(id, fullname, number) {
         return this.schema.findbynumberandupdate(number, fullname, {
             fullname: newname,
             number: newnumber
