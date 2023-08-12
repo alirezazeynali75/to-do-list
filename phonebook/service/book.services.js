@@ -5,31 +5,23 @@ class BookService {
         this.repo = repo;
     }
 
-    async get(fullname) {
-        await this.repo.getbyname(fullname)
-    }
-
-    async get(number) {
-        if (number) {
-            return this.repo.getbynumber(number)
+    async get(id) {
+        if (id) {
+            return this.repo.getById(id)
         }
-        return this.repo.getfull()
+        return this.repo.getList()
     }
 
     async create(fullname, number) {
         await this.repo.create(fullname, number)
     }
 
-    async update(fullname, number) {
-        return this.repo.updatebyname(fullname, number)
+    async delete(id) {
+        await this.repo.delete(id)
     }
 
-    async update(fullname, number) {
-        return this.repo.updatebynumber(fullname, number)
-    }
-
-    async delete(fullname, number) {
-        await this.repo.delete(fullname, number)
+    async update(id,fullname, number) {
+        return this.repo.updateById(id,fullname, number)
     }
 }
 

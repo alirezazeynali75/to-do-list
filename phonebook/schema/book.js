@@ -1,9 +1,10 @@
 const mongoose = require('mongoose');
 const schema = new mongoose.Schema({
     fullname: {
-        type: String
+        type: String,
+        required :true
     },
-    Number: {
+    number: {
         type: Number
     }
 });

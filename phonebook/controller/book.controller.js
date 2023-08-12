@@ -5,10 +5,10 @@ class bookController {
     this.service = service;
   }
 
-  async getbyname(req, res) {
+  async getById(req, res) {
     try {
-      const fullname = req.body.fullname
-      const book = await this.service.get(fullname)
+      const id = req.params.id
+      const book = await this.service.get(id)
       res.status(200).json({
         status: true,
         message: "operation is successful",
@@ -22,37 +22,21 @@ class bookController {
       })
     }
   }
-  async getbynumber(req, res) {
-    try {
-      const number = req.body.number
-      const book = await this.service.get(number)
-      res.status(200).json({
-        status: true,
-        message: "operation is successful",
-        result: book
-      })
-    } catch (e) {
-      res.status(500).json({
-        status: false,
-        message: "operation is not successful",
-        error: e.message,
-      })
-    }
-  }
-
   async getList(req, res) {
-    const books = await this.service.get()
-    res.status(200).json({
-      status: true,
-      message: "operation is successful",
-      result: books
-    })
-  } catch(e) {
-    res.status(500).json({
-      status: false,
-      message: "operation is not successful",
-      error: e.message,
-    })
+    try {
+      const book = await this.service.get()
+      res.status(200).json({
+        status: true,
+        message: "operation is successful",
+        result: book
+      })
+    } catch (e) {
+      res.status(500).json({
+        status: false,
+        message: "operation is not successful",
+        error: e.message,
+      })
+    }
   }
 
   async create(req, res) {
@@ -69,24 +53,10 @@ class bookController {
     }
   }
 
-  async deletebyname(req, res) {
+  async delete(req, res) {
     try {
-      const name = req.params.fullname
-      await this.service.delete(name)
-      res.sendStatus(204)
-    } catch (e) {
-      res.status(500).json({
-        status: false,
-        message: "operation is not successful",
-        error: e.message,
-      })
-    }
-  }
-
-  async deletebynumber(req, res) {
-    try {
-      const number = req.body.number
-      await this.service.delete(number)
+      const id = req.params.id
+      await this.service.delete(id)
       res.sendStatus(204)
     } catch (e) {
       res.status(500).json({
@@ -99,9 +69,10 @@ class bookController {
 
   async update(req, res) {
     try {
-      const fullname = req.body.fullname
+      const id = req.params.id;
+      const fullname = req.body.id
       const number = req.body.number
-      const book = await this.service.update(fullname, number)
+      const book = await this.service.update(id,fullname, number)
       res.status(200).json({
         status: true,
         message: "operation is successful",

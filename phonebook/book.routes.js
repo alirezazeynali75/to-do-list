@@ -17,8 +17,8 @@ router.get('/', async (req, res) => {
 })
 
 
-router.get('/:fullname', async (req, res) => {
-    await controller.getbyname(req, res)
+router.get('/:id', async (req, res) => {
+    await controller.getById(req, res)
 })
 
 
@@ -27,12 +27,12 @@ router.post('/', async (req, res) => {
 })
 
 
-router.put('/:number', async (req, res) => {
+router.put('/:id', async (req, res) => {
     await controller.update(req, res)
 })
 
 
-router.delete('/:number', async (req, res) => {
+router.delete('/:id', async (req, res) => {
     await controller.delete(req, res)
 })
 

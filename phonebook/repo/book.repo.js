@@ -7,12 +7,12 @@ class BookRepo {
         this.schema = schema;
     }
 
-    async getfull() {
+    async getList() {
         return this.schema.find()
     }
 
-    async getbynumber() {
-        return this.schema.findbynumber(number)
+    async getById(id) {
+        return this.schema.findById(id)
     }
 
     async create(fullname, number) {
@@ -22,27 +22,17 @@ class BookRepo {
         })
     }
 
-    async updatebynumber(id, fullname, number) {
-        return this.schema.findbynumberandupdate(number, fullname, {
+    async updateById(id, newname, newnumber) {
+        return this.schema.findByIdAndUpdate(id, {
             fullname: newname,
             number: newnumber
         })
     }
 
-    async updatebyname(fullname, number) {
-        return this.schema.findbynameandupdate(fullname, {
-            fullname: newname,
-            number: newnumber
-        })
-    }
-
-    async delete(number) {
-        await this.schema.findbynumber(number)
-    }
-
-    async delete(fullname) {
-        await this.schema.findbyname(fullname)
+    async delete(id) {
+        await this.schema.findByIdAndDelete(id)
     }
 }
+
 
 module.exports = BookRepo
